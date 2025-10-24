@@ -53,7 +53,16 @@
         {
             "name": "take_back_block@",
             "scripts": [
-                "自行完成"
+                "A S LIN J 0.1 0.1 block_pgi_high",
+                "A S LIN J 0.05 0.05 block_pgi_low",
+                "G -1 0 0 99999999%clamping clamping",
+                "G 0 -1 0 99999999%idle clamping",
+                "A S LIN J 0.1 0.1 block_pgi_high",
+                "A S PTP J 0.2 0.2 block@_high",
+                "A S LIN J 0.05 0.05 block@_low",
+                "G -1 1000 0 99999999%idle idle",
+                "A S PTP J 0.2 0.2 block@_high",
+                "A S PTP J 0.2 0.2 reset"
             ]
         },
         {

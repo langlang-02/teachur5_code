@@ -5,7 +5,7 @@ gnome-terminal --tab -- bash -c  "roscore; exec bash"
 sleep 2
 
 # 启动UR机器人驱动
-gnome-terminal --tab -- bash -c "roslaunch ur_robot_driver ur5e_bringup.launch robot_ip:=192.168.60.1; exec bash"
+gnome-terminal --tab -- bash -c "roslaunch ur_robot_driver ur5e_bringup.launch robot_ip:=192.168.60.49; exec bash"
 sleep 5
 
 # 启动双机器人MoveIt配置
