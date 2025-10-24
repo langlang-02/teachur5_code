@@ -445,16 +445,38 @@ namespace Robot_capsulation
 
         std::string move_test(const std::vector<std::any>& args);
         std::string move_joints_test();
+
+        std::string grab_test(const std::vector<std::any>& args);
+        std::string take_test(const std::vector<std::any>& args);
+
         // 不定参数函数
         std::unordered_map<std::string, std::function<std::string (const std::vector<std::any>&)>> station_func_with_args_map = {
             {
                 "move_test", 
                 [this](const std::vector<std::any>& args) -> std::string {  // 显式指定返回类型
-                    return this->move_test(args);  // 补充return
+                    return this->move_test(args);  // 补充return 
+                }
+            },
+            {
+                "grab_test", 
+                [this](const std::vector<std::any>& args) -> std::string {  // 显式指定返回类型
+                    return this->grab_test(args);  // 补充return
+                }
+            },
+            {
+                "take_test", 
+                [this](const std::vector<std::any>& args) -> std::string {  // 显式指定返回类型
+                    return this->take_test(args);  // 补充return
                 }
             },
 
         };
+
+        // std::unordered_map<std::string, std::function<std::string (const std::vector<std::any>&)>> station_func_with_args_map = {
+            
+
+        // };
+
         // 无参数函数
         std::unordered_map<std::string, std::string (Robot_operation::*)(void)> station_func_map = {
             {"move_joints_test", &Robot_operation::move_joints_test},

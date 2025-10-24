@@ -228,8 +228,18 @@ if __name__ == '__main__':
         ops = Station_command("table")
 
         while(ops.existstation_flag):
-            run('o move_test 4')
-            run('O move_joints_test')
+            # run('o move_test 4')
+            # run('O move_joints_test')
+
+            run('o grab_test 4')
+            run('o take_test 4')
+            run('o grab_test 3')
+            run('o take_test 3')
+            run('o grab_test 2')
+            run('o take_test 2')
+            run('o grab_test 1')
+            run('o take_test 1')
+            
             # 全部指令解析详见src/station_func.cpp
             # 加载data/robot_JP.json点位数据
             # run("F J robot")
