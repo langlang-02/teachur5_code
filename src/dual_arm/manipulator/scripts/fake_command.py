@@ -228,8 +228,8 @@ if __name__ == '__main__':
         ops = Station_command("table")
 
         while(ops.existstation_flag):
-            # run('o move_test 4')
-            # run('O move_joints_test')
+            run('o move_test 4')
+            run('O move_joints_test')
             # 全部指令解析详见src/station_func.cpp
             # 加载data/robot_JP.json点位数据
             # run("F J robot")
@@ -275,17 +275,17 @@ if __name__ == '__main__':
             # 执行动作组 scripts/stationdata/table.json/grab_block_to_pgi
             # @后方字符将被替换至动作组内每个动作点名称中：block@_high ---> block4_high
             # 夹爪状态判定："G -1 0 0 99999999%idle clamping",要求执行完后PGI和RGI的状态必须分别为idle和clamping
-            run("grab_block_to_pgi@4")
+            # run("grab_block_to_pgi@4")
 
-            # ～～～～～～～自行完成～～～～～～～：
-            # 依次将四个方块送至pgi夹爪夹紧，随后取回
-            run("take_back_block@4")
-            run("grab_block_to_pgi@3")
-            run("take_back_block@3")
-            run("grab_block_to_pgi@2")
-            run("take_back_block@2")
-            run("grab_block_to_pgi@1")
-            run("take_back_block@1")
+            # # ～～～～～～～自行完成～～～～～～～：
+            # # 依次将四个方块送至pgi夹爪夹紧，随后取回
+            # run("take_back_block@4")
+            # run("grab_block_to_pgi@3")
+            # run("take_back_block@3")
+            # run("grab_block_to_pgi@2")
+            # run("take_back_block@2")
+            # run("grab_block_to_pgi@1")
+            # run("take_back_block@1")
             # ～～～～～～～～～～～～～～～～
             
             # run("R L auto_balance")
