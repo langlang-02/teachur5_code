@@ -17,8 +17,8 @@ gnome-terminal --tab -- bash -c "roslaunch manipulator single_arm_rviz.launch; e
 
 
 # # 启动夹爪服务
-gnome-terminal --tab -- bash -c "roslaunch gripper_modbus Gripper_ModbusControl.launch type:=RGI port:=/dev/RGI prefix:=RGI; exec bash"
-gnome-terminal --tab -- bash -c "roslaunch gripper_modbus Gripper_ModbusControl.launch type:=PGI port:=/dev/PGI prefix:=PGI; exec bash"
+gnome-terminal --tab -- bash -c "roslaunch gripper_modbus Gripper_ModbusControl.launch type:=RGI port:=/dev/ttyUSB0 prefix:=RGI; exec bash"
+gnome-terminal --tab -- bash -c "roslaunch gripper_modbus Gripper_ModbusControl.launch type:=PGI port:=/dev/ttyUSB1 prefix:=PGI; exec bash"
 
 #sudo udevadm trigger
 #ll /dev/ |grep ttyUSB

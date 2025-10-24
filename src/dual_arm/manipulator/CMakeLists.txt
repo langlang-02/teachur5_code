@@ -153,6 +153,7 @@ include
 set(SELF_ROBOTCPP
   src/robot_arm.cpp
   src/robot_capsulation.cpp
+  src/exp_capsulation.cpp
   src/station_func.cpp
 )
 set(SELF_TOOLCPP
@@ -318,5 +319,6 @@ catkin_install_python(PROGRAMS
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()
 
-## Add folders to be run by python nosetests
+## Add folders to be run by   src/robot_capsulation.cpp
+# python nosetests
 # catkin_add_nosetests(test)

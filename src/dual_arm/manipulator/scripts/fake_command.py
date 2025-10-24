@@ -228,62 +228,64 @@ if __name__ == '__main__':
         ops = Station_command("table")
 
         while(ops.existstation_flag):
-            # 全部指令解析详见src/station_func.cpp
-            # 加载data/robot_JP.json点位数据
-            run("F J robot")
-            # 机械臂运动 A S (PTP/LIN/RRT) J(Joint)/P(Pose)/S(Station_relative_pose) vel(0.0~1.0) acc(0.0~1.0) point_name
-            run("A S PTP J 0.1 0.1 test1")
-            run("A S PTP J 0.1 0.1 test2")
+            run('o move_test 4')
+            run('O move_joints_test')
+            # # 全部指令解析详见src/station_func.cpp
+            # # 加载data/robot_JP.json点位数据
+            # run("F J robot")
+            # # 机械臂运动 A S (PTP/LIN/RRT) J(Joint)/P(Pose)/S(Station_relative_pose) vel(0.0~1.0) acc(0.0~1.0) point_name
+            # run("A S PTP J 0.1 0.1 test1")
+            # run("A S PTP J 0.1 0.1 test2")
 
-            run("A S PTP P 0.03 0.03 test1")
-            run("A S PTP P 0.03 0.03 test2")
+            # run("A S PTP P 0.03 0.03 test1")
+            # run("A S PTP P 0.03 0.03 test2")
 
-            run("A S LIN P 0.4 0.4 test1")
-            run("A S LIN P 0.4 0.4 test2")
+            # run("A S LIN P 0.4 0.4 test1")
+            # run("A S LIN P 0.4 0.4 test2")
 
-            # 延时 3s
-            run("W 3.0")
+            # # 延时 3s
+            # run("W 3.0")
 
-            # 夹爪控制 G pgi_pos(0-1000) rgi_pos(0-1000) rel_angle abs_angle
-            run("g 100 100 100 100 100 100")
-            run("G 0 -1 0 99999999")
-            run("G 1000 -1 0 99999999")
-            run("G -1 0 0 99999999")
-            run("G -1 1000 0 99999999")
-            run("G -1 0 360 99999999")
-            run("G -1 500 360 99999999")
-            run("G -1 1000 360 99999999")
-            run("G -1 500 -360 99999999")
-            run("G -1 0 -360 99999999")
-            run("G -1 0 0 1000")
-            run("G -1 0 0 500")
-            run("G -1 0 0 0")
-            run("G -1 0 0 500")
-            run("G -1 0 0 -500")
-            run("G -1 0 0 500")
+            # # 夹爪控制 G pgi_pos(0-1000) rgi_pos(0-1000) rel_angle abs_angle
+            # run("g 100 100 100 100 100 100")
+            # run("G 0 -1 0 99999999")
+            # run("G 1000 -1 0 99999999")
+            # run("G -1 0 0 99999999")
+            # run("G -1 1000 0 99999999")
+            # run("G -1 0 360 99999999")
+            # run("G -1 500 360 99999999")
+            # run("G -1 1000 360 99999999")
+            # run("G -1 500 -360 99999999")
+            # run("G -1 0 -360 99999999")
+            # run("G -1 0 0 1000")
+            # run("G -1 0 0 500")
+            # run("G -1 0 0 0")
+            # run("G -1 0 0 500")
+            # run("G -1 0 0 -500")
+            # run("G -1 0 0 500")
 
-            # 夹爪参数设置 g pgi_force(20-100) pgi_velocity(1-100) rgi_force(20-100) rgi_velocity(1-100) rgi_torque(20-100) rgi_speed(1-100)
-            run("g 20 20 20 20 20 20")
-            run("G 0 1000 0 99999999")
-            run("g 100 100 100 100 100 100")
-            run("G 1000 0 1000 99999999")
-            run("g -1 50 -1 50 -1 -1")
-            run("G 0 1000 0 99999999")
+            # # 夹爪参数设置 g pgi_force(20-100) pgi_velocity(1-100) rgi_force(20-100) rgi_velocity(1-100) rgi_torque(20-100) rgi_speed(1-100)
+            # run("g 20 20 20 20 20 20")
+            # run("G 0 1000 0 99999999")
+            # run("g 100 100 100 100 100 100")
+            # run("G 1000 0 1000 99999999")
+            # run("g -1 50 -1 50 -1 -1")
+            # run("G 0 1000 0 99999999")
 
-            # 执行动作组 scripts/stationdata/table.json/grab_block_to_pgi
-            # @后方字符将被替换至动作组内每个动作点名称中：block@_high ---> block4_high
-            # 夹爪状态判定："G -1 0 0 99999999%idle clamping",要求执行完后PGI和RGI的状态必须分别为idle和clamping
-            run("grab_block_to_pgi@4")
+            # # 执行动作组 scripts/stationdata/table.json/grab_block_to_pgi
+            # # @后方字符将被替换至动作组内每个动作点名称中：block@_high ---> block4_high
+            # # 夹爪状态判定："G -1 0 0 99999999%idle clamping",要求执行完后PGI和RGI的状态必须分别为idle和clamping
+            # run("grab_block_to_pgi@4")
 
-            # ～～～～～～～自行完成～～～～～～～：
-            # 依次将四个方块送至pgi夹爪夹紧，随后取回
-            run("take_back_block@4")
-            run("grab_block_to_pgi@3")
-            run("take_back_block@3")
-            run("grab_block_to_pgi@2")
-            run("take_back_block@2")
-            run("grab_block_to_pgi@1")
-            run("take_back_block@1")
+            # # ～～～～～～～自行完成～～～～～～～：
+            # # 依次将四个方块送至pgi夹爪夹紧，随后取回
+            # run("take_back_block@4")
+            # run("grab_block_to_pgi@3")
+            # run("take_back_block@3")
+            # run("grab_block_to_pgi@2")
+            # run("take_back_block@2")
+            # run("grab_block_to_pgi@1")
+            # run("take_back_block@1")
             # ～～～～～～～～～～～～～～～～
             
             # run("R L auto_balance")
