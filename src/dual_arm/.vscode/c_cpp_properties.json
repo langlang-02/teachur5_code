@@ -1,0 +1,61 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/admin1/B_workspace/gel_dual_robot/devel/include/**",
+        "/home/admin1/C_library/catkin_ws/devel/include/**",
+        "/opt/ros/noetic/include/**",
+        "/home/admin1/C_library/ws_moveit/devel/include/**",
+        "/home/admin1/B_workspace/gel_dual_robot/src/aruco_ros/aruco/include/**",
+        "/home/admin1/B_workspace/gel_dual_robot/src/aruco_ros/aruco_ros/include/**",
+        "/home/admin1/B_workspace/gel_dual_robot/src/dual_arm/Universal_Robots_ROS_controllers_cartesian/cartesian_interface/include/**",
+        "/home/admin1/B_workspace/gel_dual_robot/src/dual_arm/Universal_Robots_ROS_controllers_cartesian/cartesian_trajectory_controller/include/**",
+        "/home/admin1/B_workspace/gel_dual_robot/src/dual_arm/Universal_Robots_ROS_controllers_cartesian/cartesian_trajectory_interpolation/include/**",
+        "/home/admin1/C_library/ws_moveit/src/moveit/moveit_planners/chomp/chomp_motion_planner/include/**",
+        "/home/admin1/B_workspace/gel_dual_robot/src/dual_arm/Universal_Robots_ROS_Driver/controller_stopper/include/**",
+        "/home/admin1/B_workspace/gel_dual_robot/src/dual_arm/dashboard/include/**",
+        "/home/admin1/C_library/ws_moveit/src/geometric_shapes/include/**",
+        "/home/admin1/B_workspace/gel_dual_robot/src/js_control/include/**",
+        "/home/admin1/B_workspace/gel_dual_robot/src/dual_arm/manipulator/include/**",
+        "/home/admin1/C_library/ws_moveit/src/moveit/moveit_planners/chomp/chomp_interface/include/**",
+        "/home/admin1/C_library/ws_moveit/src/moveit_resources/prbt_ikfast_manipulator_plugin/include/**",
+        "/home/admin1/C_library/ws_moveit/src/moveit/moveit_ros/benchmarks/include/**",
+        "/home/admin1/C_library/ws_moveit/src/moveit/moveit_plugins/moveit_ros_control_interface/include/**",
+        "/home/admin1/C_library/ws_moveit/src/moveit/moveit_ros/move_group/include/**",
+        "/home/admin1/C_library/ws_moveit/src/moveit/moveit_ros/occupancy_map_monitor/include/**",
+        "/home/admin1/C_library/ws_moveit/src/moveit/moveit_ros/robot_interaction/include/**",
+        "/home/admin1/C_library/ws_moveit/src/moveit/moveit_ros/moveit_servo/include/**",
+        "/home/admin1/C_library/ws_moveit/src/moveit/moveit_setup_assistant/include/**",
+        "/home/admin1/C_library/ws_moveit/src/moveit/moveit_plugins/moveit_simple_controller_manager/include/**",
+        "/home/admin1/C_library/ws_moveit/src/moveit_visual_tools/include/**",
+        "/home/admin1/B_workspace/gel_dual_robot/src/dual_arm/pgi140/include/**",
+        "/home/admin1/C_library/ws_moveit/src/moveit/moveit_planners/pilz_industrial_motion_planner/include/**",
+        "/home/admin1/C_library/ws_moveit/src/moveit/moveit_planners/pilz_industrial_motion_planner_testutils/include/**",
+        "/home/admin1/C_library/catkin_ws/src/robotiq/robotiq_2f_gripper_action_server/include/**",
+        "/home/admin1/C_library/catkin_ws/src/robotiq/robotiq_2f_gripper_control/include/**",
+        "/home/admin1/C_library/catkin_ws/src/robotiq/robotiq_3f_gripper_articulated_gazebo_plugins/include/**",
+        "/home/admin1/C_library/catkin_ws/src/robotiq/robotiq_3f_gripper_control/include/**",
+        "/home/admin1/C_library/catkin_ws/src/robotiq/robotiq_ethercat/include/**",
+        "/home/admin1/B_workspace/gel_dual_robot/src/dual_arm/robotiq_ft_sensor/include/**",
+        "/home/admin1/C_library/ws_moveit/src/rviz_visual_tools/include/**",
+        "/home/admin1/B_workspace/gel_dual_robot/src/selfdefined_trajectory_controller/include/**",
+        "/home/admin1/C_library/ws_moveit/src/srdfdom/include/**",
+        "/home/admin1/B_workspace/gel_dual_robot/src/dual_arm/Universal_Robots_ROS_controllers_cartesian/twist_controller/include/**",
+        "/home/admin1/B_workspace/gel_dual_robot/src/dual_arm/Universal_Robots_ROS_Driver/ur_calibration/include/**",
+        "/home/admin1/B_workspace/gel_dual_robot/src/dual_arm/universal_robot/ur_kinematics/include/**",
+        "/home/admin1/B_workspace/gel_dual_robot/src/dual_arm/Universal_Robots_ROS_Driver/ur_robot_driver/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}

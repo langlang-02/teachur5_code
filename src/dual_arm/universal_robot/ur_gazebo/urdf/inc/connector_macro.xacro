@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro">
+    <material name="grey">
+        <color rgba="0.5 0.5 0.5 1.0"/>
+    </material>
+    <!-- 定义连接的圆柱的xacro宏 -->
+    <xacro:macro name="cylinder_link" params="prefix radius length">
+    <link name="${prefix}cylinder_link">
+        <visual>
+        <geometry>
+            <cylinder radius="${radius}" length="${length}"/>
+        </geometry>
+        <origin xyz="0 0 ${length/2}" rpy="0 0 0"/>
+        <material name="grey"/>
+        </visual>
+        <collision>
+        <geometry>
+            <cylinder radius="${radius}" length="${length}"/>
+        </geometry>
+        <origin xyz="0 0 ${length/2}" rpy="0 0 0"/>
+        </collision>
+    </link>
+    </xacro:macro>
+</robot>

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro" name="ur5e_robot">
+
+  <!-- 一些变量定义 -->
+  <xacro:property name="prefix1" value="right_" />
+  
+  <!-- UR机械臂文件 -->
+  <xacro:include filename="$(find arm_robot_description)/urdf/inc/ur5e_macro.xacro" />
+
+  <link name="world"/>
+  <!-- 右机械臂 -->
+  <xacro:ur5e_robot prefix="${prefix1}" z_extendlength="0.0" z_rotation="0" />
+  <joint name="${prefix1}virtual_fixed" type="fixed">
+    <parent link="world" />
+    <child link="${prefix1}base_link" />
+    <origin xyz="0.17475 0.0 0.64111" rpy="-3.14159 0.785396 -3.14157" />
+  </joint>
+
+
+</robot>

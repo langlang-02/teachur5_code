@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro">
+  <!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by
+  Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+  <xacro:macro name="head" params="camera_angle">
+    <link
+      name="head_link">
+      <inertial>
+        <origin
+          xyz="0.10509 0.0025699 -0.046837"
+          rpy="0 0 0" />
+        <mass
+          value="2.8418" />
+        <inertia
+          ixx="0.02624"
+          ixy="-0.00030059"
+          ixz="-2.3615E-08"
+          iyy="0.016373"
+          iyz="4.8178E-07"
+          izz="0.011367" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://ur_gazebo/meshes/head/head_link.STL" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.89804 0.82745 0.11765 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://ur_gazebo/meshes/head/head_link.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <link
+      name="camera_fixed_link">
+      <inertial>
+        <origin
+          xyz="0.00017347 0.027417 0.04176"
+          rpy="0 0 0" />
+        <mass
+          value="0.057939" />
+        <inertia
+          ixx="3.4645E-05"
+          ixy="1.3474E-09"
+          ixz="4.6377E-07"
+          iyy="6.3455E-06"
+          iyz="4.0965E-07"
+          izz="3.348E-05" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://ur_gazebo/meshes/head/camera_fixed_link.STL" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.066667 0.6 0.29804 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://ur_gazebo/meshes/head/camera_fixed_link.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <joint
+      name="camera_fixed_joint"
+      type="fixed">
+      <origin
+        xyz="0.10034 0.16948 -0.0168"
+        rpy="-1.5708 0 ${camera_angle}" />
+      <parent
+        link="head_link" />
+      <child
+        link="camera_fixed_link" />
+      <axis
+        xyz="0 0 0" />
+    </joint>
+
+  </xacro:macro>
+</robot>

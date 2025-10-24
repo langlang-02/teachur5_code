@@ -1,0 +1,209 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro">
+  <!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by
+  Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+  <xacro:macro name="body">
+    <link
+      name="body_base_link">
+      <inertial>
+        <origin
+          xyz="-1.72E-06 -0.00094189 0.44814"
+          rpy="0 0 0" />
+        <mass
+          value="5.3997" />
+        <inertia
+          ixx="0.18584"
+          ixy="-3.9082E-07"
+          ixz="-1.5348E-07"
+          iyy="0.24302"
+          iyz="-4.7491E-05"
+          izz="0.069032" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://ur_gazebo/meshes/body/body_link.STL" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="1 1 1 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://ur_gazebo/meshes/body/body_link.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <link
+      name="body_right_base_link">
+      <inertial>
+        <origin
+          xyz="1.446E-05 0.063848 -0.00090827"
+          rpy="0 0 0" />
+        <mass
+          value="0.65565" />
+        <inertia
+          ixx="0.0011999"
+          ixy="5.6587E-07"
+          ixz="8.9252E-08"
+          iyy="0.001589"
+          iyz="-2.2042E-05"
+          izz="0.001245" />
+      </inertial>
+      <!-- <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ur_gazebo/meshes/body/meshes/right_arm_fixed_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ur_gazebo/meshes/body/meshes/right_arm_fixed_link.STL" />
+      </geometry>
+    </collision> -->
+    </link>
+    <joint
+      name="right_arm_fixed_joint"
+      type="fixed">
+      <origin
+        xyz="-0.17475 0 0.64111"
+        rpy="-0.95532 -0.5236 2.1863" />
+      <parent
+        link="body_base_link" />
+      <child
+        link="body_right_base_link" />
+      <axis
+        xyz="0 0 0" />
+    </joint>
+    <link
+      name="body_left_base_link">
+      <inertial>
+        <origin
+          xyz="1.446E-05 0.053848 -0.00090827"
+          rpy="0 0 0" />
+        <mass
+          value="0.65565" />
+        <inertia
+          ixx="0.0011999"
+          ixy="5.6587E-07"
+          ixz="8.9252E-08"
+          iyy="0.001589"
+          iyz="-2.2042E-05"
+          izz="0.001245" />
+      </inertial>
+      <!-- <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ur_gazebo/meshes/body/meshes/left_arm_fixed_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ur_gazebo/meshes/body/meshes/left_arm_fixed_link.STL" />
+      </geometry>
+    </collision> -->
+    </link>
+    <joint
+      name="left_arm_fixed_joint"
+      type="fixed">
+      <origin
+        xyz="0.18182 0 0.63404"
+        rpy="-0.95532 0.5236 -2.1863" />
+      <parent
+        link="body_base_link" />
+      <child
+        link="body_left_base_link" />
+      <axis
+        xyz="0 0 0" />
+    </joint>
+    <link
+      name="bozi_link">
+      <inertial>
+        <origin
+          xyz="-0.02368 -0.062099 -0.0468"
+          rpy="0 0 0" />
+        <mass
+          value="0.5717" />
+        <inertia
+          ixx="0.0043319"
+          ixy="-0.0007239"
+          ixz="-3.3674E-09"
+          iyy="0.00074141"
+          iyz="2.8419E-09"
+          izz="0.0044017" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://ur_gazebo/meshes/body/bozi_link.STL" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.066667 0.6 0.29804 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://ur_gazebo/meshes/body/bozi_link.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <joint
+      name="bozi_joint"
+      type="fixed">
+      <origin
+        xyz="-0.0468 -0.045 0.91925"
+        rpy="1.5708 0 -1.5708" />
+      <parent
+        link="body_base_link" />
+      <child
+        link="bozi_link" />
+      <axis
+        xyz="0 0 0" />
+    </joint>
+
+  </xacro:macro>
+</robot>

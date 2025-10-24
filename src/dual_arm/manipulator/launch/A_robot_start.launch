@@ -1,0 +1,35 @@
+<launch>
+  <!-- 定义一个参数 -->
+  <arg name="Dual_arm_flag" default="true" doc="双臂" />
+  <arg name="Dashboard_flag" default="true" doc="进行示教板" />
+  <arg name="ADP1000_flag" default="false" doc="使用移液枪" />
+  <arg name="Balance_flag" default="false" doc="使用天平" />
+  <arg name="Locator_flag" default="true" doc="使用重定位" />
+  <arg name="R_RGI_flag" default="true" doc="使用右臂RGI" />
+  <arg name="R_RGI_port" default="RPGI" />
+  <arg name="L_PGI140_flag" default="true" doc="使用左臂pgi140" />
+  <arg name="L_PGI140_port" default="LPGI" />
+  <arg name="debug_enable_flag" default="false" doc="进行debug测试" />
+  <arg name="Autostrech_flag" default="false" doc="自动伸缩" />
+  <arg name="Load_JPfile" default="auto_balance" doc="加载的标点文件" />
+  <arg name="Image_flag" default="false" doc="使用视觉处理" />
+  <arg name="aheadFT_flag" default="true" doc="true提前力矩处理,转化为world坐标系下" />
+
+  <!-- 启动节点，并传递参数 -->
+  <node name="A_manipulator" pkg="manipulator" type="A_manipulator" output="screen">
+    <param name="Dual_arm_flag" type="bool" value="$(arg Dual_arm_flag)" />
+    <param name="Dashboard_flag" type="bool" value="$(arg Dashboard_flag)" />
+    <param name="ADP1000_flag" type="bool" value="$(arg ADP1000_flag)" />
+    <param name="Balance_flag" type="bool" value="$(arg Balance_flag)" />
+    <param name="Locator_flag" type="bool" value="$(arg Locator_flag)" />
+    <param name="R_RGI_flag" type="bool" value="$(arg R_RGI_flag)" />
+    <param name="R_RGI_port" type="string" value="$(arg R_RGI_port)" />
+    <param name="L_PGI140_flag" type="bool" value="$(arg L_PGI140_flag)" />
+    <param name="L_PGI140_port" type="string" value="$(arg L_PGI140_port)" />
+    <param name="debug_enable_flag" type="bool" value="$(arg debug_enable_flag)" />
+    <param name="Autostrech_flag" type="bool" value="$(arg Autostrech_flag)" />
+    <param name="Load_JPfile" type="string" value="$(arg Load_JPfile)" />
+    <param name="Image_flag" type="bool" value="$(arg Image_flag)" />
+    <param name="aheadFT_flag" type="bool" value="$(arg aheadFT_flag)" />
+  </node>
+</launch>

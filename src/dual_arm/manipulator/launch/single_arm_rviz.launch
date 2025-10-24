@@ -1,0 +1,5 @@
+<launch>
+    <!-- 启动RViz节点 -->
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find manipulator)/config/single_arm_moveit.rviz" respawn="true" output="screen"/>
+  </launch>
+  

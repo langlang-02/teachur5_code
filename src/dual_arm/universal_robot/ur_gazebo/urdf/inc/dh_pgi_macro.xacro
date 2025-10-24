@@ -1,0 +1,205 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro">
+    <!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+  <xacro:macro name="dh_pgi140" params="
+   prefix "
+  >
+    <xacro:include filename="$(find ur_gazebo)/urdf/inc/dh_pgi_gazebo.transmission.xacro" />
+    <link name="${prefix}dh_base_link">
+        <inertial>
+        <origin
+            xyz="-2.97896383687117E-05 -0.00119414606853069 0.0383013066202999"
+            rpy="0 0 0" />
+        <mass
+            value="0.407689241604604" />
+        <inertia
+            ixx="0.000382601149885368"
+            ixy="-2.00188830802339E-08"
+            ixz="-2.74934362808617E-08"
+            iyy="0.000182283012175943"
+            iyz="2.92748971762364E-07"
+            izz="0.000433183926992861" />
+        </inertial>
+        <visual>
+        <origin
+            xyz="0 0 0"
+            rpy="0 0 0" />
+        <geometry>
+            <mesh
+            filename="package://ur_gazebo/meshes/dh_pgi/dh_base_link.STL" />
+        </geometry>
+        <material
+            name="light_grey">
+            <color
+            rgba="1 1 1 1" />
+        </material>
+        </visual>
+        <collision>
+        <origin
+            xyz="0 0 0"
+            rpy="0 0 0" />
+        <geometry>
+            <mesh
+            filename="package://ur_gazebo/meshes/dh_pgi/dh_base_link.STL" />
+        </geometry>
+        </collision>
+    </link>
+    <link name="${prefix}dh_finger1_link">
+        <inertial>
+        <origin
+            xyz="0.00194790394990391 0.00918650753677023 0.00947748977599767"
+            rpy="0 0 0" />
+        <mass
+            value="0.0589543896992846" />
+        <inertia
+            ixx="2.37128965154064E-05"
+            ixy="3.83269385718325E-06"
+            ixz="4.94815116549899E-06"
+            iyy="3.37272907966156E-05"
+            iyz="-4.62772008724202E-06"
+            izz="1.98369145830284E-05" />
+        </inertial>
+        <visual>
+        <origin
+            xyz="0 0 0"
+            rpy="0 0 0" />
+        <geometry>
+            <mesh
+            filename="package://ur_gazebo/meshes/dh_pgi/dh_finger1_link.STL" />
+        </geometry>
+        <material
+            name="light_grey">
+            <color
+            rgba="1 1 1 1" />
+        </material>
+        </visual>
+        <collision>
+        <origin
+            xyz="0 0 0"
+            rpy="0 0 0" />
+        <geometry>
+            <mesh
+            filename="package://ur_gazebo/meshes/dh_pgi/dh_finger1_link.STL" />
+        </geometry>
+        </collision>
+    </link>
+    <gazebo reference="${prefix}dh_finger1_link">
+        <implicitSpringDamper>1</implicitSpringDamper>
+        <mu1>100000</mu1>
+        <mu2>100000</mu2>
+        <kp>100000000.0</kp>
+        <kd>1.0</kd>
+    </gazebo>  
+    <joint name="${prefix}dh_base_finger1_joint" type="prismatic">
+        <origin
+        xyz="-0.0184 0.0 0.09325"
+        rpy="0 0 -1.5708" />
+        <parent
+        link="${prefix}dh_base_link" />
+        <child
+        link="${prefix}dh_finger1_link" />
+        <axis
+        xyz="-1 0 0" />
+        <limit
+        lower="0"
+        upper="0.04"
+        effort="30"
+        velocity="0.5" />
+    </joint>
+    <link name="${prefix}dh_finger2_link">
+        <inertial>
+        <origin
+            xyz="0.00194790394990389 0.00918650753677023 0.00947748977599765"
+            rpy="0 0 0" />
+        <mass
+            value="0.0589543896992846" />
+        <inertia
+            ixx="2.37128965154064E-05"
+            ixy="3.83269385718325E-06"
+            ixz="4.94815116549898E-06"
+            iyy="3.37272907966157E-05"
+            iyz="-4.62772008724202E-06"
+            izz="1.98369145830284E-05" />
+        </inertial>
+        <visual>
+        <origin
+            xyz="0 0 0"
+            rpy="0 0 0" />
+        <geometry>
+            <mesh
+            filename="package://ur_gazebo/meshes/dh_pgi/dh_finger2_link.STL" />
+        </geometry>
+        <material
+            name="light_grey">
+            <color
+            rgba="1 1 1 1" />
+        </material>
+        </visual>
+        <collision>
+        <origin
+            xyz="0 0 0"
+            rpy="0 0 0" />
+        <geometry>
+            <mesh
+            filename="package://ur_gazebo/meshes/dh_pgi/dh_finger2_link.STL" />
+        </geometry>
+        </collision>
+    </link>
+    <gazebo reference="${prefix}dh_finger2_link">
+        <implicitSpringDamper>1</implicitSpringDamper>
+        <mu1>100000</mu1>
+        <mu2>100000</mu2>
+        <kp>100000000.0</kp>
+        <kd>1.0</kd>
+    </gazebo>  
+    <joint name="${prefix}dh_base_finger2_joint" type="prismatic">
+        <origin
+        xyz="0.0184 -0.0 0.09325"
+        rpy="0 0 1.5708" />
+        <parent
+        link="${prefix}dh_base_link" />
+        <child
+        link="${prefix}dh_finger2_link" />
+        <axis
+        xyz="-1 0 0" />
+        <limit
+        lower="0"
+        upper="0.04"
+        effort="20"
+        velocity="0.5" />
+        <mimic
+        joint="${prefix}dh_base_finger1_joint"
+        multiplier="1"
+        offset="0" />
+    </joint>
+    <link name="${prefix}dh_center_link"> </link>
+    <joint name="${prefix}dh_base_center_joint" type="fixed">
+        <origin
+        xyz="0 0 0.14124"
+        rpy="3.1416 -1.5708 0" />
+        <parent
+        link="${prefix}dh_base_link" />
+        <child
+        link="${prefix}dh_center_link" />
+        <axis
+        xyz="0 0 0" />
+    </joint>
+    <link name="${prefix}dh_load1_link"> </link>
+    <joint name="${prefix}dh_base_load1_joint" type="fixed">
+        <origin
+        xyz="-0.030325 0 0.0619"
+        rpy="3.1416 -1.5708 0" />
+        <parent
+        link="${prefix}dh_base_link" />
+        <child
+        link="${prefix}dh_load1_link" />
+        <axis
+        xyz="0 0 0" />
+    </joint>
+
+    <xacro:dh_pgi_transmission prefix="${prefix}" />
+
+  </xacro:macro>
+</robot>

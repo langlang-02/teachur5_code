@@ -1,0 +1,36 @@
+<!-- <launch>
+  <arg name="use_current_scene" default="false"/>
+  <arg name="planning_group" default="manipulator"/>
+  <arg name="constraints_file" doc="the path to a constraints yaml file (see generate_state_database for details)"/>
+  <param name="move_group/constraint_approximations_path" value="$(find single_robot_moveit_config)/data/database"/>
+
+
+  <node name="generate_state_database" pkg="moveit_planners_ompl" type="generate_state_database" output="screen">
+    <param name="use_current_scene" value="$(arg use_current_scene)"/>
+    <param name="planning_group" value="$(arg planning_group)"/>
+    <remap from="~output_folder" to="move_group/constraint_approximations_path"/>
+
+    <rosparam ns="constraints" command="load" file="$(arg constraints_file)"/>
+  </node>
+
+</launch> -->
+
+<launch>
+  <arg name="use_current_scene" default="true"/>
+  <arg name="planning_group" default="manipulator"/>
+  <arg name="constraints_file" default="$(find single_robot_moveit_config)/config/constraints.yaml" doc="the path to a constraints yaml file (see generate_state_database for details)"/>
+  <arg name="output_folder" default="$(find single_robot_moveit_config)/data/database"/>
+  <arg name="state_cnt" value="5000000"/>
+  <arg name="edges_per_sample" value="0"/>
+  
+  <node name="generate_state_database" pkg="moveit_planners_ompl" type="generate_state_database" output="screen">
+    <param name="use_current_scene" value="$(arg use_current_scene)"/>
+    <param name="planning_group" value="$(arg planning_group)"/>
+    <param name="output_folder" value="$(arg output_folder)"/>
+    <param name="state_cnt" value="$(arg state_cnt)"/>
+    <param name="edges_per_sample" value="$(arg edges_per_sample)"/>
+
+    <rosparam ns="constraints" command="load" file="$(arg constraints_file)"/>
+  </node>
+
+</launch>

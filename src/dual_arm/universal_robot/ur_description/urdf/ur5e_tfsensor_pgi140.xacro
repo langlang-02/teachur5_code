@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro" name="ur5e_ftsensor_pgi140">
+  <!-- ur5 -->
+  <xacro:include filename="$(find ur_description)/urdf/ur5e.xacro" />
+  <!-- tf_sensor -->
+  <xacro:include filename="$(find ur_description)/urdf/robotiq_ft300.urdf.xacro" />
+  <!-- end-effector -->
+  <xacro:include filename="$(find ur_description)/urdf/pgi140.urdf.xacro" />
+
+  <!-- <xacro:ur5e_robot prefix="" /> -->
+
+  <xacro:robotiq_ft300 parent="tool0" prefix="">
+    <origin xyz="0 0 0" rpy="0 0 -1.57079633"/>
+  </xacro:robotiq_ft300>
+
+  <xacro:pgi140 parent="tool0" prefix="">
+    <origin xyz="0.0025 0 0.074" rpy="-1.57079633 3.1415926535 0"/>
+  </xacro:pgi140>
+
+  <link name="world" />
+  <joint name="world_joint" type="fixed">
+    <parent link="world" />
+    <child link="base_link" />
+    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+  </joint>
+
+</robot>

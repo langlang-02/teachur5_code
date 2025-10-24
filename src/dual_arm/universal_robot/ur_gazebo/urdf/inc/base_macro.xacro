@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro" name="dual_robot">
+  <xacro:macro name="base" >
+
+    <!-- 对于底座的描述 -->
+    <link name="base_link">
+        <inertial>
+        <origin xyz="-1.4069E-17 0 0.40258" rpy="0 0 0" />
+        <mass value="400.99" />
+        <inertia
+            ixx="46.843"
+            ixy="-1.8381E-16"
+            ixz="-1.5044E-15"
+            iyy="31.456"
+            iyz="2.1237E-15"
+            izz="38.411" />
+        </inertial>
+        <visual>
+        <origin
+            xyz="0 0 0"
+            rpy="0 0 0" />
+        <geometry>
+            <mesh
+            filename="package://ur_gazebo/meshes/base/base_link.STL" />
+        </geometry>
+        <material
+            name="">
+            <color
+            rgba="0.066667 0.6 0.29804 1" />
+        </material>
+        </visual>
+        <collision>
+        <origin
+            xyz="0 0 0"
+            rpy="0 0 0" />
+        <geometry>
+            <mesh
+            filename="package://ur_gazebo/meshes/base/base_link.STL" />
+        </geometry>
+        </collision>
+    </link>
+    <!-- ################################### -->
+
+  </xacro:macro>
+    
+</robot>

@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+    <!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot xmlns:xacro="http://wiki.ros.org/xacro">
+
+  <xacro:macro name="tool_camera" params="
+   prefix"
+  >
+  <link name="${prefix}tool_base_link">
+    <inertial>
+      <origin
+        xyz="-0.01085 4.4441E-09 0.01005"
+        rpy="0 0 0" />
+      <mass
+        value="0.021763" />
+      <inertia
+        ixx="8.355E-06"
+        ixy="2.7897E-14"
+        ixz="1.1022E-06"
+        iyy="4.1504E-06"
+        iyz="2.4783E-13"
+        izz="7.7133E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ur_gazebo/meshes/tool_camera/tool_base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ur_gazebo/meshes/tool_camera/tool_base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="${prefix}tool_camera_base_link"> </link>
+  <joint name="${prefix}tool_base_camera_base_joint" type="fixed">
+    <origin
+      xyz="-0.017 0 0.0305"
+      rpy="0 0 0" />
+    <parent
+      link="${prefix}tool_base_link" />
+    <child
+      link="${prefix}tool_camera_base_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+
+
+  </xacro:macro>
+</robot>

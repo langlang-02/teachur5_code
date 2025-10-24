@@ -1,0 +1,20 @@
+<launch>
+  <!-- 定义夹爪1的参数（默认PGI，端口/dev/LPGI） -->
+  <!-- ll /dev/ |grep ttyUSB -->
+  <arg name="type" default="PGI" doc="夹爪类型" />
+  <arg name="port" default="/dev/LPGI" doc="夹爪端口" />
+  <arg name="prefix" default="PGI" doc="服务名前缀" />
+
+  <!-- 启动夹爪（命名空间为类型，避免冲突） -->
+  <group ns="$(arg prefix)">
+    <node name="Gripper_ModbusControl" 
+          pkg="gripper_modbus" 
+          type="Gripper_ModbusControl.py" 
+          output="screen" 
+          args="anonymous:=true">
+      <param name="Goal_gripper" type="string" value="$(arg type)" />
+      <param name="Used_port" type="string" value="$(arg port)" />
+      <param name="Prefix" type="string" value="$(arg prefix)" />
+    </node>
+  </group>
+</launch>

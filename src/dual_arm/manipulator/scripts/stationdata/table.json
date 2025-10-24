@@ -1,0 +1,60 @@
+{
+    "cmd": [
+        {
+            "name": "example",
+            "scripts": [
+                "F J robot",
+                "A S PTP J 0.1 0.1 test1",
+                "A S PTP J 0.1 0.1 test2",
+
+                "A S PTP P 0.03 0.03 test1",
+                "A S PTP P 0.03 0.03 test2",
+
+                "A S LIN P 0.4 0.4 test1",
+                "A S LIN P 0.4 0.4 test2",
+
+                "G 0 -1 0 99999999",
+                "G 1000 -1 0 99999999",
+                "G -1 0 0 99999999",
+                "G -1 1000 0 99999999",
+                "G -1 0 360 99999999",
+                "G -1 500 360 99999999",
+                "G -1 1000 360 99999999",
+                "G -1 500 -360 99999999",
+                "G -1 0 -360 99999999",
+                "G -1 0 0 1000",
+                "G -1 0 0 500",
+                "G -1 0 0 0",
+                "G -1 0 0 -500",
+                "G -1 0 0 -1000"
+            ]
+        },
+        {
+            "name": "grab_block_to_pgi@",
+            "scripts": [
+                "F J robot",
+                "G 0 1000 0 0%idle idle",
+                "A S PTP J 0.2 0.2 reset",
+                "A S PTP J 0.2 0.2 block@_high",
+                "A S LIN J 0.05 0.05 block@_low",
+                "G -1 0 0 99999999%idle clamping",
+                "A S LIN J 0.05 0.05 block@_high",
+                "G -1 -1 360 99999999%idle clamping",
+                "A S PTP J 0.2 0.2 block_pgi_high",
+                "A S PTP J 0.2 0.2 block_pgi_mid",
+                "A S LIN J 0.05 0.05 block_pgi_low",
+                "G 1000 -1 0 99999999%clamping clamping",
+                "G -1 1000 0 99999999%clamping idle",
+                "A S LIN J 0.1 0.1 block_pgi_high",
+                "A S PTP J 0.2 0.2 reset"
+            ]
+        },
+        {
+            "name": "take_back_block@",
+            "scripts": [
+                "自行完成"
+            ]
+        }
+        
+    ]
+}

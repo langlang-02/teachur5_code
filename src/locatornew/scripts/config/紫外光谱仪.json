@@ -1,0 +1,55 @@
+{
+    "station": "uv",
+    "arm": "left",
+    "task": "calib",
+    "type": "circleGrid",
+    "matrix": "A1",
+    "imageAndPoseDirectory": "img_take/",
+    "poseRelativeFile": "pose.txt",
+    "calibResultFile": "avg_tq_bTt.txt",
+    "calibMethod": "CALIB_HAND_EYE_TSAI",
+    "moveP_acc": 0.5,
+    "moveP_vel": 1.0,
+
+    "calib": {
+        "overwrite": true,
+        "minX": -80,
+        "maxX": 80,
+        "minY": -80,
+        "maxY": 80,
+        "minZ": 250,
+        "maxZ": 350,
+        "pointNumX": 5,
+        "pointNumY": 5,
+        "pointNumZ": 3
+    },
+    "multiloc": {
+        "minX": -90,
+        "maxX": 90,
+        "minY": -90,
+        "maxY": 90,
+        "minZ": 250,
+        "maxZ": 350,
+        "allNumber": 20
+    },
+
+    "charuco": {
+        "ARUCO_DICT": "DICT_5X5_250",
+        "SQUARE_LENGTH": 40,
+        "MARKER_LENGTH": 30,
+        "SQUARES_VERTICALLY": 14,
+        "SQUARES_HORIZONTALLY": 9,
+        "selectedAruco": [31]
+    },
+    "aruco": {
+        "ARUCO_DICT": "DICT_ARUCO_ORIGINAL",
+        "MARKER_ID_AND_LENGTH": {
+            "38": 75
+        }
+    },
+    "circleGrid": {
+        "circleDistance": 7,
+        "circleRadius": 1.75,
+        "circlePerRow": 7
+    }
+}

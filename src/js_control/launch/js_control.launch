@@ -1,0 +1,20 @@
+<launch>
+    <arg name="Dual_arm_flag" default="true" doc="双臂" />
+    <arg name="goal_robot" default="right_robot" doc="需要控制器切换对应的目标机械臂" />
+    <arg name="switch_mode" default="1" doc="单双臂控制选择"/>
+    <arg name="control_mode" default="1" doc="手柄控制权限"/>
+    <node pkg="joy" type="joy_node" name="joystick_ur" respawn="false">
+        <param name="dev" value="/dev/input/js0" type="string"/>
+        <param name="autorepeat_rate" value="50" />
+    </node>
+
+    <node pkg="js_control" type="js_control" name="js_control" output="screen"> 
+        <param name="Dual_arm_flag" type="bool" value="$(arg Dual_arm_flag)" />
+        <param name="tra_scale" value="0.03" type="double"/>
+        <param name="rotssss_scale" value="0.025" type="double"/>
+        <param name="switch_goalrobot" type="str" value="$(arg goal_robot)" />
+        <param name="switch_mode" type="int" value="$(arg switch_mode)"/>
+        <param name="control_mode" type="int" value="$(arg control_mode)"/>
+    </node>
+
+</launch>

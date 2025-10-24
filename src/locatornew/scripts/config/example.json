@@ -1,0 +1,57 @@
+{
+    "station": "站点名称",
+    "arm": "机械臂名称，left或right",
+    "task": "任务类型，指定系统执行的操作模式。可选值：'realtime'（实时识别circleGrid<15Hz,aruco<13Hz）、'oneloc'（单次定位）、'calib'（标定）、'multiloc'（定位）",
+    "type": "标定板类型，指定使用的标定板图案。可选值：'circleGrid'（圆形网格）、'aruco'（Aruco 标记）、'charuco'（Charuco 棋盘格）",
+    "matrix": "旋转矩阵选择，用于姿态计算时的旋转矩阵选项。可选值：'A1右下'、'A2右上'、'A3左下'、'A4左上'",
+    "imageAndPoseDirectory": "图像与位姿数据存储目录，存放拍摄的图像和对应的位姿文件。默认值：'img_take/'",
+    "poseRelativeFile": "位姿数据文件名，记录机械臂位姿信息的文件名称。默认值：'pose.txt'",
+    "calibResultFile": "标定结果文件名，保存标定得到的变换矩阵等结果的文件名称。默认值：'avg_tq_bTt.txt'",
+    "calibMethod": "标定方法，手眼标定所采用的算法。可选值：'CALIB_HAND_EYE_TSAI'、'CALIB_HAND_EYE_PARK'、'CALIB_HAND_EYE_HORAUD'、'CALIB_HAND_EYE_ANDREFF'、'CALIB_HAND_EYE_DANIILIDIS'",
+    "moveP_acc": "多次拍照机械臂运动加速度0-1",
+    "moveP_vel": "多次拍照机械臂运动速度0-1",
+
+    "calib": {
+        "overwrite": "是否覆盖已有标定结果，若为 true 则覆盖已有的标定结果文件",
+        "minX": "X 轴最小范围，标定时目标在 X 轴方向的最小坐标（单位：毫米）",
+        "maxX": "X 轴最大范围，标定时目标在 X 轴方向的最大坐标（单位：毫米）",
+        "minY": "Y 轴最小范围，标定时目标在 Y 轴方向的最小坐标（单位：毫米）",
+        "maxY": "Y 轴最大范围，标定时目标在 Y 轴方向的最大坐标（单位：毫米）",
+        "minZ": "Z 轴最小范围，标定时目标在 Z 轴方向的最小坐标（单位：毫米）",
+        "maxZ": "Z 轴最大范围，标定时目标在 Z 轴方向的最大坐标（单位：毫米）",
+        "pointNumX": "X 轴点数，标定时在 X 轴方向的采样点数量。",
+        "pointNumY": "Y 轴点数，标定时在 Y 轴方向的采样点数量。",
+        "pointNumZ": "Z 轴点数，标定时在 Z 轴方向的采样点数量。总点数不得小于4"
+    },
+    "multiloc": {
+        "minX": "X 轴最小范围，定位时目标在 X 轴方向的最小坐标（单位：毫米）",
+        "maxX": "X 轴最大范围，定位时目标在 X 轴方向的最大坐标（单位：毫米）",
+        "minY": "Y 轴最小范围，定位时目标在 Y 轴方向的最小坐标（单位：毫米）",
+        "maxY": "Y 轴最大范围，定位时目标在 Y 轴方向的最大坐标（单位：毫米）",
+        "minZ": "Z 轴最小范围，定位时目标在 Z 轴方向的最小坐标（单位：毫米）",
+        "maxZ": "Z 轴最大范围，定位时目标在 Z 轴方向的最大坐标（单位：毫米）",
+        "allNumber": "总点数，定位时的采样点总数量。不得小于4"
+    },
+
+    "charuco": {
+        "ARUCO_DICT": "Aruco 字典类型，Charuco 标定板使用的 Aruco 字典。可选值：'DICT_4X4_50'、'DICT_4X4_100'、'DICT_4X4_250'、'DICT_4X4_1000'、'DICT_5X5_50'、'DICT_5X5_100'、'DICT_5X5_250'、'DICT_5X5_1000' 等",
+        "SQUARE_LENGTH": "棋盘格边长，Charuco 标定板中棋盘格的边长（单位：毫米）。可选值：根据实际标定板设置（如 20-100）",
+        "MARKER_LENGTH": "标记边长，Charuco 标定板中 Aruco 标记的边长（单位：毫米）。可选值：通常为棋盘格边长的 0.7-0.8 倍（如 15-80）",
+        "SQUARES_VERTICALLY": "垂直方向棋盘格数量，Charuco 标定板垂直方向的棋盘格数量。可选值：正整数（建议 5-20）",
+        "SQUARES_HORIZONTALLY": "水平方向棋盘格数量，Charuco 标定板水平方向的棋盘格数量。可选值：正整数（建议 5-20）",
+        "selectedAruco": "选中的 Aruco 标记 ID 列表，用于特定 Aruco 标记的识别和定位。可选值：包含 Aruco 字典范围内 ID 的列表（如 [31, 42, 55]）"
+    },
+    "aruco": {
+        "ARUCO_DICT": "Aruco 字典类型，Aruco 标定板使用的 Aruco 字典。可选值：同 charuco 的 ARUCO_DICT",
+        "MARKER_ID_AND_LENGTH": {
+            "markerId1": "标记边长，Aruco 标定板中标记的边长（单位：毫米）。常见规格是75和25",
+            "markerId2": "标记边长，Aruco 标定板中标记的边长（单位：毫米）。常见规格是75和25",
+            "markerId3": "标记边长，Aruco 标定板中标记的边长（单位：毫米）。常见规格是75和25"
+        }
+    },
+    "circleGrid": {
+        "circleDistance": "圆心间距，圆形网格标定板中相邻圆心之间的距离（单位：毫米）。常见规格是7",
+        "circleRadius": "圆半径，圆形网格标定板中圆的半径（单位：毫米）。常见规格是1.75",
+        "circlePerRow": "每行圆数量，圆形网格标定板每行的圆数量。常见规格是7"
+    }
+}

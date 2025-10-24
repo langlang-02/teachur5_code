@@ -1,0 +1,9 @@
+<launch>
+  <!-- 定义一个参数 -->
+  <arg name="Used_port" default="/dev/BALANCE" />
+
+  <!-- 启动节点，并传递参数 -->
+  <node name="balance_com" pkg="balance_com" type="balance_com.py" output="screen" args="anonymous:=true">
+      <param name="Used_port" type="string" value="$(arg Used_port)" />
+  </node>
+</launch>

@@ -1,0 +1,155 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro" name="ur5e_robot">
+
+  <!-- 头部活动（脖子/头顶摄像头）角度 -->
+  <xacro:property name="head_angle" value="-0.1" />
+  <xacro:property name="camera_angle" value="-2.0943951" />
+
+  <!-- 一些变量定义 -->
+  <xacro:property name="prefix1" value="right_" />
+  <xacro:property name="prefix2" value="left_" />
+
+  <!-- UR机械臂文件 -->
+  <xacro:include filename="$(find arm_robot_description)/urdf/inc/ur5e_macro.xacro" />
+  <!-- 机器人基座 -->
+  <xacro:include filename="$(find ur_gazebo)/urdf/inc/base_macro.xacro"/>
+  <!-- 机器人躯干 -->
+  <xacro:include filename="$(find ur_gazebo)/urdf/inc/body_macro.xacro"/>
+  <!-- 机器人头部 -->
+  <xacro:include filename="$(find ur_gazebo)/urdf/inc/head_macro.xacro"/>
+  <!-- 机械臂夹爪 -->
+  <xacro:include filename="$(find ur_gazebo)/urdf/inc/dh_pgi_macro.xacro"/>
+  <!-- 相机 -->
+  <xacro:include filename="$(find ur_gazebo)/urdf/inc/tool_camera_macro.xacro"/>
+  <!-- 快换接头 -->
+  <xacro:include filename="$(find ur_gazebo)/urdf/inc/connector_macro.xacro"/>
+
+  <link name="world"/>
+  <!-- 机器人躯干-->
+  <xacro:body />
+  <joint name="body_base_joint" type="fixed">
+    <parent link="world"/>
+    <child link="body_base_link"/>
+    <origin xyz="0 0 0" rpy="0 0 3.1415926"/>
+    <axis xyz="0 0 0" />
+  </joint>
+  <!-- 机器底盘 -->
+  <xacro:base />
+  <joint name="base_joint" type="fixed"> 
+      <parent link="world"/>
+      <child link="base_link"/>
+      <origin xyz="0 0.26 -0.78" rpy="0.0 0.0 0.0" />
+  </joint>
+  <!-- 机器人头部 -->
+  <xacro:head camera_angle="${camera_angle}"/>
+  <joint name="head_body_joint" type="fixed">
+    <parent link="bozi_link"/>
+    <child link="head_link"/>
+    <origin xyz="0 0 0" rpy="0 0 ${head_angle}"/>
+    <axis xyz="0 0 0" />
+  </joint>
+
+  <!-- 右机械臂 -->
+  <link name="${prefix1}correct_link"/>
+  <joint name="${prefix1}correct_joint" type="fixed"> 
+    <parent link="body_${prefix1}base_link"/>
+    <child link="${prefix1}correct_link"/>
+      <!-- <origin xyz="0 0 0" rpy="-1.5707963 -2.35619448975 0.0" /> -->
+      <origin xyz="0 0 0" rpy="-1.5707963 2.35619448975 0.0" />
+  </joint>
+  <xacro:ur5e_robot prefix="${prefix1}" z_extendlength="0.0" z_rotation="0" />
+  <joint name="${prefix1}virtual_fixed" type="fixed">
+    <parent link="${prefix1}correct_link" />
+    <child link="${prefix1}base_link" />
+    <!-- 虚拟关节修正 303双臂-->
+    <origin xyz="-0.0066921846946403655 -0.002600286144153635 -0.006093015057886548" rpy="0.024634239507260677 0.024505316242835955 0.030019273717465822" />
+    <!-- 虚拟关节修正 122双臂 -->
+    <!-- <origin xyz="0.0021545831088007907 0.00394873913655588 0.0027677203107635837" rpy="0.005968923709695319 0.04016538606522298 -0.013529501182820914" /> -->
+  </joint>
+  <!-- 左机械臂 -->
+  <link name="${prefix2}correct_link"/>
+  <joint name="${prefix2}correct_joint" type="fixed"> 
+    <parent link="body_${prefix2}base_link"/>
+    <child link="${prefix2}correct_link"/>
+      <!-- <origin xyz="0 0 0" rpy="-1.5707963 -0.7853977 0.0" /> -->
+      <origin xyz="0 0 0" rpy="-1.5707963 -2.35619448975 0.0" />
+  </joint>
+  <xacro:ur5e_robot prefix="${prefix2}" z_extendlength="0.0" z_rotation="0" />
+  <joint name="${prefix2}virtual_fixed" type="fixed">
+    <parent link="${prefix2}correct_link" />
+    <child link="${prefix2}base_link" />
+    <!-- 虚拟关节修正 303双臂-->
+    <origin xyz="0.002238020457361953 0.0018590715222349453 -0.017598891402959775" rpy="-0.03410282109340867 -0.005826426407330215 0.03153908117410756" />
+    <!-- 虚拟关节修正 122双臂 -->
+    <!-- <origin xyz="-0.006541489853785968 -0.007729717986465748 -0.01983307246065965" rpy="0.008621858605125588 0.0381043444870475 0.0003715304942707464" /> -->
+  </joint>
+
+  <!-- 右臂夹爪  -->
+  <xacro:dh_pgi140 prefix="${prefix1}"/>
+  <joint name="${prefix1}gripper_joint" type="fixed">
+    <parent link="${prefix1}tool0"/>
+    <child link="${prefix1}dh_base_link"/>
+    <origin xyz="0 0 0.006" rpy="0 0 -1.5707963"/>
+  </joint>
+  
+  <!-- 左臂夹爪  -->
+  <xacro:cylinder_link prefix="${prefix2}" radius="0.023" length="0.03"/>
+  <!-- 定义圆柱连接到correct_link的关节 -->
+  <joint name="${prefix2}cylinder_joint" type="fixed">
+    <parent link="${prefix2}tool0"/>
+    <child link="${prefix2}cylinder_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
+
+  <xacro:dh_pgi140 prefix="${prefix2}"/>
+  <joint name="${prefix2}gripper_joint" type="fixed">
+    <parent link="${prefix2}cylinder_link"/>
+    <child link="${prefix2}dh_base_link"/>
+    <!-- <origin xyz="0 0 0.031" rpy="0 1.5707963 3.141592653"/> -->
+    <origin xyz="0 0 0" rpy="0 0 1.5707963"/>
+
+    <!-- <origin xyz="0 0 0.047" rpy="0 1.5707963 3.141592653"/> -->
+  </joint>
+
+  <!-- right camera load to right gripper -->
+  <xacro:tool_camera prefix="${prefix1}" />
+  <joint name="${prefix1}tool_camera_joint" type="fixed">
+    <parent link="${prefix1}dh_load1_link"/>
+    <child link="${prefix1}tool_base_link"/>
+    <origin xyz="0 0 0" rpy="3.141592653 0 0"/>
+  </joint>
+
+  <!-- left camera load to left gripper -->
+  <xacro:tool_camera prefix="${prefix2}" />
+  <joint name="${prefix2}tool_camera_joint" type="fixed">
+    <parent link="${prefix2}dh_load1_link"/>
+    <child link="${prefix2}tool_base_link"/>
+    <origin xyz="0 0 0" rpy="3.141592653 0 0"/>
+  </joint>
+
+  <link name="${prefix1}camera_color_optical_frame"/>
+  <link name="${prefix2}camera_color_optical_frame"/>
+  <joint name="${prefix1}tool0_to_camera_color_optical_frame" type="fixed">
+    <origin
+      xyz="-0.005289993 -0.062279085000000005 0.073105231"
+      rpy="0.005864 -0.002423 0.014898" />
+    <parent
+      link="${prefix1}tool0" />
+    <child
+      link="${prefix1}camera_color_optical_frame" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <joint name="${prefix2}tool0_to_camera_color_optical_frame" type="fixed">
+    <origin
+      xyz="-0.004946901 -0.062018262 0.07452819499999999"
+      rpy="0.005105 -0.001831 0.013797" />
+    <parent
+      link="${prefix2}tool0" />
+    <child
+      link="${prefix2}camera_color_optical_frame" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+</robot>

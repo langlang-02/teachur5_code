@@ -1,0 +1,170 @@
+joint_state_controller:
+  type: joint_state_controller/JointStateController
+  publish_rate: &loop_hz 500
+
+# l_eff_joint_traj_controller:
+#   type: effort_controllers/JointTrajectoryController
+#   joints: &l_robot_joints
+#     - l_shoulder_pan_joint
+#     - l_shoulder_lift_joint
+#     - l_elbow_joint
+#     - l_wrist_1_joint
+#     - l_wrist_2_joint
+#     - l_wrist_3_joint
+#   gains: # Required because we're controlling an effort interface
+#     l_shoulder_pan_joint: {p: 4000,  d: 200, i: 1, i_clamp: 1}
+#     l_shoulder_lift_joint: {p: 10000,  d: 200, i: 1, i_clamp: 1}
+#     l_elbow_joint: {p: 2000,  d: 20, i: 1, i_clamp: 1}
+#     l_wrist_1_joint: {p: 500,  d: 1, i: 1, i_clamp: 1}
+#     l_wrist_2_joint: {p: 500,  d: 1, i: 1, i_clamp: 1}
+#     l_wrist_3_joint: {p: 10,  d: 0.1, i: 0, i_clamp: 1} 
+#   constraints:
+#     goal_time: 0.6
+#     stopped_velocity_tolerance: 0.05
+#     l_shoulder_pan_joint: {trajectory: 0.1, goal: 0.1}
+#     l_shoulder_lift_joint: {trajectory: 0.1, goal: 0.1}
+#     l_elbow_joint: {trajectory: 0.1, goal: 0.1}
+#     l_wrist_1_joint: {trajectory: 0.1, goal: 0.1}
+#     l_wrist_2_joint: {trajectory: 0.1, goal: 0.1}
+#     l_wrist_3_joint: {trajectory: 0.1, goal: 0.1}
+#   stop_trajectory_duration: 0.5
+#   state_publish_rate: *loop_hz
+#   action_monitor_rate: 10
+
+# l_joint_group_eff_controller:
+#   type: effort_controllers/JointGroupEffortController
+#   joints: *l_robot_joints
+
+# l_scaled_pos_joint_traj_controller:
+#    type: position_controllers/ScaledJointTrajectoryController
+#    joints: *l_robot_joints
+#    constraints:
+#       goal_time: 0.6
+#       stopped_velocity_tolerance: 0.05
+#       l_shoulder_pan_joint: {trajectory: 0.2, goal: 0.1}
+#       l_shoulder_lift_joint: {trajectory: 0.2, goal: 0.1}
+#       l_elbow_joint: {trajectory: 0.2, goal: 0.1}
+#       l_wrist_1_joint: {trajectory: 0.2, goal: 0.1}
+#       l_wrist_2_joint: {trajectory: 0.2, goal: 0.1}
+#       l_wrist_3_joint: {trajectory: 0.2, goal: 0.1}
+#    stop_trajectory_duration: 0.5
+#    state_publish_rate: *loop_hz
+#    action_monitor_rate: 20
+
+l_pos_joint_traj_controller:
+   type: position_controllers/JointTrajectoryController
+   joints: &l_robot_joints
+    - l_shoulder_pan_joint
+    - l_shoulder_lift_joint
+    - l_elbow_joint
+    - l_wrist_1_joint
+    - l_wrist_2_joint
+    - l_wrist_3_joint
+   constraints:
+      goal_time: 0.6
+      stopped_velocity_tolerance: 0.05
+      l_shoulder_pan_joint: {trajectory: 0.2, goal: 0.1}
+      l_shoulder_lift_joint: {trajectory: 0.2, goal: 0.1}
+      l_elbow_joint: {trajectory: 0.2, goal: 0.1}
+      l_wrist_1_joint: {trajectory: 0.2, goal: 0.1}
+      l_wrist_2_joint: {trajectory: 0.2, goal: 0.1}
+      l_wrist_3_joint: {trajectory: 0.2, goal: 0.1}
+   stop_trajectory_duration: 0.5
+   state_publish_rate: *loop_hz
+   action_monitor_rate: 20
+
+
+# r_eff_joint_traj_controller:
+#   type: effort_controllers/JointTrajectoryController
+#   joints: &r_robot_joints
+#     - r_shoulder_pan_joint
+#     - r_shoulder_lift_joint
+#     - r_elbow_joint
+#     - r_wrist_1_joint
+#     - r_wrist_2_joint
+#     - r_wrist_3_joint
+#   gains: # Required because we're controlling an effort interface
+#     r_shoulder_pan_joint: {p: 4000,  d: 200, i: 1, i_clamp: 1}
+#     r_shoulder_lift_joint: {p: 10000,  d: 200, i: 1, i_clamp: 1}
+#     r_elbow_joint: {p: 2000,  d: 20, i: 1, i_clamp: 1}
+#     r_wrist_1_joint: {p: 500,  d: 1, i: 1, i_clamp: 1}
+#     r_wrist_2_joint: {p: 500,  d: 1, i: 1, i_clamp: 1}
+#     r_wrist_3_joint: {p: 10,  d: 0.1, i: 0, i_clamp: 1} 
+#   constraints:
+#     goal_time: 0.6
+#     stopped_velocity_tolerance: 0.05
+#     r_shoulder_pan_joint: {trajectory: 0.1, goal: 0.1}
+#     r_shoulder_lift_joint: {trajectory: 0.1, goal: 0.1}
+#     r_elbow_joint: {trajectory: 0.1, goal: 0.1}
+#     r_wrist_1_joint: {trajectory: 0.1, goal: 0.1}
+#     r_wrist_2_joint: {trajectory: 0.1, goal: 0.1}
+#     r_wrist_3_joint: {trajectory: 0.1, goal: 0.1}
+#   stop_trajectory_duration: 0.5
+#   state_publish_rate: *loop_hz
+#   action_monitor_rate: 10
+
+# r_joint_group_eff_controller:
+#   type: effort_controllers/JointGroupEffortController
+#   joints: *r_robot_joints
+
+# r_scaled_pos_joint_traj_controller:
+#    type: position_controllers/ScaledJointTrajectoryController
+#    joints: *r_robot_joints
+#    constraints:
+#       goal_time: 0.6
+#       stopped_velocity_tolerance: 0.05
+#       r_shoulder_pan_joint: {trajectory: 0.2, goal: 0.1}
+#       r_shoulder_lift_joint: {trajectory: 0.2, goal: 0.1}
+#       r_elbow_joint: {trajectory: 0.2, goal: 0.1}
+#       r_wrist_1_joint: {trajectory: 0.2, goal: 0.1}
+#       r_wrist_2_joint: {trajectory: 0.2, goal: 0.1}
+#       r_wrist_3_joint: {trajectory: 0.2, goal: 0.1}
+#    stop_trajectory_duration: 0.5
+#    state_publish_rate: *loop_hz
+#    action_monitor_rate: 20
+
+r_pos_joint_traj_controller:
+   type: position_controllers/JointTrajectoryController
+   joints: &r_robot_joints
+    - r_shoulder_pan_joint
+    - r_shoulder_lift_joint
+    - r_elbow_joint
+    - r_wrist_1_joint
+    - r_wrist_2_joint
+    - r_wrist_3_joint
+   constraints:
+      goal_time: 0.6
+      stopped_velocity_tolerance: 0.05
+      r_shoulder_pan_joint: {trajectory: 0.2, goal: 0.1}
+      r_shoulder_lift_joint: {trajectory: 0.2, goal: 0.1}
+      r_elbow_joint: {trajectory: 0.2, goal: 0.1}
+      r_wrist_1_joint: {trajectory: 0.2, goal: 0.1}
+      r_wrist_2_joint: {trajectory: 0.2, goal: 0.1}
+      r_wrist_3_joint: {trajectory: 0.2, goal: 0.1}
+   stop_trajectory_duration: 0.5
+   state_publish_rate: *loop_hz
+   action_monitor_rate: 20
+
+l_gripper:
+  type: position_controllers/JointTrajectoryController
+  joints:
+     - l_dh_base_finger1_joint
+  constraints:
+      goal_time: 0.6
+      stopped_velocity_tolerance: 0.05
+      l_dh_base_finger1_joint: {trajectory: 0.1, goal: 0.1}
+  stop_trajectory_duration: 0.5
+  state_publish_rate:  25
+  action_monitor_rate: 10
+
+r_gripper:
+  type: position_controllers/JointTrajectoryController
+  joints:
+     - r_dh_base_finger1_joint
+  constraints:
+      goal_time: 0.6
+      stopped_velocity_tolerance: 0.05
+      r_dh_base_finger1_joint: {trajectory: 0.1, goal: 0.1}
+  stop_trajectory_duration: 0.5
+  state_publish_rate:  25
+  action_monitor_rate: 10

@@ -1,0 +1,8 @@
+name: grip_constraint
+constraints:
+- type: orientation
+  frame_id: base_link
+  link_name: tool0
+  orientation: [-3.14, 0, 0] #RPY
+  tolerances: [0.2, 0.2, 6.28319]
+  weight: 1.0

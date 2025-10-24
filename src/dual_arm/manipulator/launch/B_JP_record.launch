@@ -1,0 +1,11 @@
+<launch>
+  <!-- 定义一个参数 -->
+  <arg name="Record_JPfile" default="fume_hood" doc="加载的机器人点位文件" />
+  <!-- <arg name="Record_JPfile" default="screwrobot" doc="加载的标点文件" /> -->
+  <!-- <arg name="Record_JPfile" default="grindrobot" doc="加载的标点文件" /> -->
+
+  <!-- 启动节点，并传递参数 -->
+  <node name="B_record" pkg="manipulator" type="B_record" output="screen">
+    <param name="Record_JPfile" type="str" value="$(arg Record_JPfile)" />
+  </node>
+</launch>

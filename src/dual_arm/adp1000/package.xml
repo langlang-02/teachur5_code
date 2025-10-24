@@ -1,0 +1,26 @@
+<package format="2">
+  <name>adp1000</name>
+  <version>1.0.0</version>
+  <description>
+    <p>URDF Description and controler package for RGI</p>
+    <p>This package contains configuration data, 3D models, controler and launch files for RGI gripper</p>
+  </description>
+  <author>tangxs</author>
+  <maintainer email="ustcert@mail.ustc.edu.cn" />
+  <license>BSD</license>
+  <build_depend>message_generation</build_depend>
+  <exec_depend>message_runtime</exec_depend>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <depend>robot_state_publisher</depend>
+  <depend>rviz</depend>
+  <depend>joint_state_publisher_gui</depend>
+  <depend>gazebo</depend>
+  <depend>roscpp</depend>
+  <depend>rospy</depend>
+  <depend>std_msgs</depend>
+  <depend>serial</depend>
+  <export>
+    <architecture_independent />
+  </export>
+</package>

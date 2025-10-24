@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:macro name="dh_pgi_transmission" params="prefix">
+
+        <transmission name="${prefix}dh_base_finger1_trans">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="${prefix}dh_base_finger1_joint">
+                <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            </joint>
+            <actuator name="${prefix}dh_base_finger1_motor">
+                <mechanicalReduction>1</mechanicalReduction>
+                <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            </actuator>
+        </transmission>
+        
+        <!--libroboticsgroup_gazebo_mimic_joint_plugin.so loading plugin: mimic joints works in gazebo now  libroboticsgroup_upatras_gazebo_mimic_joint_plugin.so-->
+        <gazebo>
+            <plugin filename="libroboticsgroup_upatras_gazebo_mimic_joint_plugin.so" name="${prefix}mimic_dh_robotics_ag95_1">
+                <joint>${prefix}dh_base_finger1_joint</joint>
+                <mimicJoint>${prefix}dh_base_finger2_joint</mimicJoint>
+                <multiplier>1.0</multiplier>
+                <offset>0.0</offset>
+            </plugin>
+        </gazebo>
+
+        <!-- <gazebo>
+        <plugin filename="libroboticsgroup_gazebo_mimic_joint_plugin.so" name="${prefix}mimic_dh_robotics_ag95_1">
+            <joint>${prefix}dh_base_finger1_joint</joint>
+            <mimicJoint>${prefix}dh_base_finger2_joint</mimicJoint>
+            <multiplier>1.0</multiplier>
+            <offset>0.0</offset>
+        </plugin>
+    </gazebo> -->
+
+    </xacro:macro>
+
+</robot>

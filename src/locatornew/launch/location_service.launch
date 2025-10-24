@@ -1,0 +1,3 @@
+<launch>
+    <node name="location_service_node" pkg="locatornew" type="location_service.py" output="screen"/>
+</launch>

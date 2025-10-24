@@ -1,0 +1,7 @@
+<library path="lib/libselfdefined_trajectory_controller">
+  <class name="position_controllers/SelfDefinedTrajectoryController" type="position_controllers::SelfDefinedTrajectoryController" base_class_type="controller_interface::ControllerBase">
+  <description>
+    position-based self defined trajectory controller
+  </description>
+  </class>
+</library>

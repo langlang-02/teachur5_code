@@ -1,0 +1,7 @@
+string command_json
+---
+# 响应：定位结果状态 + 缓存的bTt矩阵（展平为列表）
+string status       # success/error + 描述
+bool result_valid   # 结果是否有效
+float32[] cached_bTt# 缓存的4x4 bTt矩阵（展平为16个元素）
+string cached_station# 缓存的站点名称

@@ -1,0 +1,19 @@
+int32 position
+int32 force
+int32 velocity
+int32 abs_angle
+int32 rel_angle
+int32 torque
+int32 speed
+bool stop_flag
+bool block_flag
+bool reset_flag
+int32 feedback
+---
+int32 position
+int32 force
+int32 velocity
+int32 abs_angle
+int32 torque
+int32 speed
+string status
